@@ -1,0 +1,37 @@
+blueprint:
+  name: Z2M - Mode détaché ZbminiR2
+  description: Allumer/Eteindre une lumière connectée en la maintenant électriquement alimentée
+  domain: automation
+  source_url: https://github.com/raffoul/ha-blueprints/tree/main/z2m_mode_detache_zbminir2.yaml
+  author: Raffoul
+  homeassistant:
+    min_version: 2025.3.0 
+
+  input:
+    switch_event:
+      name: Événement déclencheur
+      description: Evénement déclenché sur appui interrupteur
+      selector:
+        entity:
+          filter:
+            - integration: mqtt
+              domain: event
+          multiple: false
+
+    target_lights:
+      name: Lumières cibles
+      description: Sélectionnez les lumières à contrôler
+      selector:
+        target:
+          entity:
+            domain: light
+
+triggers:
+  - trigger: state
+    entity_id: !input switch_event
+    not_from: unavailable
+
+actions:
+  - service: light.toggle
+    target: !input target_lights
+mode: restart
