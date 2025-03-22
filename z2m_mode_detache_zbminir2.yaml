@@ -2,7 +2,7 @@ blueprint:
   name: Z2M - Mode détaché ZbminiR2
   description: Allumer/Eteindre une lumière connectée en la maintenant électriquement alimentée
   domain: automation
-  source_url: https://github.com/raffoul/ha-blueprints/tree/main/z2m_mode_detache_zbminir2.yaml
+  source_url: https://github.com/raffoul/ha-blueprints/blob/main/z2m_mode_detache_zbminir2.yaml
   author: Raffoul
   homeassistant:
     min_version: 2025.3.0 
