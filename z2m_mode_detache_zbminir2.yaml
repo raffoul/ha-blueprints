@@ -29,11 +29,7 @@ blueprint:
 triggers:
   - trigger: state
     entity_id: !input switch_event
-    not_from: unavailable
-
-condition:
-  - condition: template
-    value_template: "{{ trigger.from_state.state != 'unknown' }}"
+    not_to: unavailable
 
 actions:
   - service: light.toggle
