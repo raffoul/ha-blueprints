@@ -31,6 +31,10 @@ triggers:
     entity_id: !input switch_event
     not_from: unavailable
 
+condition:
+  - condition: template
+    value_template: "{{ trigger.from_state.state != 'unknown' }}"
+
 actions:
   - service: light.toggle
     target: !input target_lights
